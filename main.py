@@ -1,13 +1,12 @@
-from typing import Union
 import translators as ts
 from fastapi import FastAPI
-from models import TranslateModel
+from models import TranslateModel, TranslateResponse, LanguageResponse
 from translate import language_codes
 
 app = FastAPI()
 
 
-@app.post("/translate")
+@app.post("/translate", response_model=TranslateResponse)
 def translate(translate: TranslateModel):
     """
     Translate text from one language to another.
@@ -17,7 +16,7 @@ def translate(translate: TranslateModel):
     return {"result": result}
 
 
-@app.get("/languages")
+@app.get("/languages", response_model=LanguageResponse)
 def get_languages():
     """
     Get a list of supported languages.

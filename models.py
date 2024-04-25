@@ -6,3 +6,9 @@ class TranslateModel(BaseModel):
     text: str
     
     
+class TranslateResponse(BaseModel):
+    result: str
+    
+
+class LanguageResponse(BaseModel):
+    language_name: str
