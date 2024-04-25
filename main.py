@@ -1,6 +1,6 @@
 import translators as ts
 from fastapi import FastAPI
-from models import TranslateModel, TranslateResponse, LanguageResponse
+from models import TranslateModel, TranslateResponse
 from translate import language_codes
 
 app = FastAPI()
@@ -16,7 +16,7 @@ def translate(translate: TranslateModel):
     return {"result": result}
 
 
-@app.get("/languages", response_model=LanguageResponse)
+@app.get("/languages")
 def get_languages():
     """
     Get a list of supported languages.
